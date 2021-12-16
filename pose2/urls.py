@@ -20,6 +20,6 @@ handler500 = my_customized_server_error
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('videos/', include('video.urls')),
+    path('/', include('video.urls')),
     path('accounts/', include('allauth.urls')),
 ]
