@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'video'
 urlpatterns = [
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('pose/<int:video_id>', views.pose, name='pose'),
     path("setup/", views.setup, name="setup"),
     path("show_progress/", views.show_progress, name="show_progress"),
