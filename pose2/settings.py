@@ -17,7 +17,6 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-import django_heroku
 import dj_database_url
 import environ
 
@@ -199,3 +198,7 @@ CLOUDINARY_STORAGE  = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
