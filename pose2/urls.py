@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from video.views import my_customized_server_error
 handler500 = my_customized_server_error
 
