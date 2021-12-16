@@ -11,7 +11,7 @@
 
 {% block extracss %}
     <!-- customcss -->
-    <link rel="stylesheet" type="text/css" href="{% static 'video/css/pose.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pose.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -34,9 +34,9 @@
         <div id="video-box" class="video-box">
             <video-js id="video" class="vjs-big-play-centered video overlay" controls playsinline>
                 {% if video.is_estimated %}
-                    <source src="{{ video.video_file }}" poster="{% static 'video/img/home.png' %}" type="video/mp4">
+                    <source src="{{ video.video_file }}" poster="" type="video/mp4">
                 {% else %}
-                    <source src="{{ video.video_file.url }}" poster="{% static 'video/img/home.png' %}" type="video/mp4">
+                    <source src="{{ video.video_file.url }}" poster="" type="video/mp4">
                 {% endif %}
                 <!--<source src="{% static video.video_file.url %}" poster="{% static 'video/img/home.png' %}" type="video/mp4">-->
             </video-js>
