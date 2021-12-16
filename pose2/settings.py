@@ -74,11 +74,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-#EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
-#SENDGRID_API_KEY = env('SENDGRID_API_KEY')
-#SENDGRID_SANDBOX_MODE_IN_DEBUG = False # production mode
-#SENDGRID_TRACK_CLICKS_PLAIN = False # URL tracking
-#SENDGRID_ECHO_TO_STDOUT = True # display in terminal
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False # production mode
+SENDGRID_TRACK_CLICKS_PLAIN = False # URL tracking
+SENDGRID_ECHO_TO_STDOUT = True # display in terminal
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
