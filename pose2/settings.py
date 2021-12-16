@@ -31,6 +31,7 @@ env.read_env('.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
+#SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -75,8 +76,8 @@ ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-#SENDGRID_API_KEY = env('SENDGRID_API_KEY')
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+#SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False # production mode
 SENDGRID_TRACK_CLICKS_PLAIN = False # URL tracking
 SENDGRID_ECHO_TO_STDOUT = True # display in terminal
@@ -122,19 +123,17 @@ WSGI_APPLICATION = 'pose2.wsgi.application'
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }'''
-
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2', 
-        'NAME': "env('DATABASE_NAME')", 
-        'USER': "env('DATABASE_USER')", 
-        'PASSWORD': "env('DATABASE_PASSWORD')", 
-        'HOST': "env('DATABASE_HOST')", 
+        'NAME': env('DATABASE_NAME'), 
+        'USER': env('DATABASE_USER'), 
+        'PASSWORD': env('DATABASE_PASSWORD'), 
+        'HOST': env('DATABASE_HOST'), 
         'PORT':'5432'
     }
-}
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'].update(db_from_env)
+}'''
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
