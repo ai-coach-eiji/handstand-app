@@ -19,6 +19,7 @@ import cloudinary.api
 
 import dj_database_url
 import environ
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,7 +78,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
-EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+EMAIL_HOST_PASSWORD = config('SENDGRID_API_KEY')#env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False # production mode
