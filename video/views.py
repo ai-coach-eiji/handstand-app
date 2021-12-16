@@ -225,3 +225,16 @@ def delete(request):
         return JsonResponse({'video_id': video_id})
     else:
         return JsonResponse({'status': 'cannot delete'})
+
+# Use this when heroku raises 'Server Error (500)' in production mode
+from django.views.decorators.csrf import requires_csrf_token
+from django.http import (
+    HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound,
+    HttpResponseServerError)
+
+@requires_csrf_token
+def my_customized_server_error(request, template_name='500.html'):
+    import sys
+    from django.views import debug
+    error_html = debug.technical_500_response(request, *sys.exc_info()).content
+    return HttpResponseServerError(error_html)
